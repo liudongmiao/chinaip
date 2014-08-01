@@ -1,0 +1,23 @@
+#!/bin/bash
+
+export LC_ALL=C
+export PATH="$PATH:/sbin:/usr/sbin:/bin:/usr/bin"
+
+MAGIC=3c3bd1da74bfa2379ecb01dab861f829
+
+# interface-name tty-device speed local-IP-address remote-IP-address ipparam
+gateway=$6
+if [ x"$gateway" == x"" ]; then
+	exit
+fi
+
+sed -n -e "/^$MAGIC/,\$p" $0 | while read line; do
+	if [[ $line =~ ^[0-9.]+/[0-9]+$ ]]; then
+		route -n add $line $gateway
+	fi
+done
+exit
+
+# dont delete magic line
+3c3bd1da74bfa2379ecb01dab861f829
+
