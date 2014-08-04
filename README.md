@@ -6,7 +6,7 @@
 
 Mac OS X用户可以直接使用下面命令，下载处理好的文件，放到/etc/ppp下(执行前请先停用VPN)。
 
-    curl -L -O "https://github.com/liudongmiao/chinaip/blob/master/mac/{ip-up,ip-down}"
+    curl -L -O "https://github.com/liudongmiao/chinaip/raw/master/mac/{ip-up,ip-down}"
     chmod +x ip-up ip-down
     sudo cp ip-up ip-down /etc/ppp
 
