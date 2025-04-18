@@ -20,7 +20,7 @@ def check_range(start, end):
             step += 1
         if step >= (32 - MAXBITS):
             count += (1 << step)
-            print '%s/%s' % (getip(base), (32 - step))
+            print('%s/%s' % (getip(base), (32 - step)))
         base += (1 << step)
     return count
 def parse_record(name):
@@ -44,16 +44,15 @@ def parse_record(name):
             amount += end - start
             start = newstart
             end = newend
-    print >> sys.stderr, '%d%%' % (100 * routed / amount)
-    # print >> sys.stderr, 'routed=%d, amount=%d' % (routed, amount)
+    print('%d%%' % (100 * routed / amount), file=sys.stderr)
 DELEGATED_APNIC = 'ftp.apnic.net/stats/apnic/delegated-apnic-latest'
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        print >> sys.stderr, 'please download %s' % DELEGATED_APNIC
+        print('please download %s' % DELEGATED_APNIC, file=sys.stderr)
     else:
-        print '10.0.0.0/8'
-        print '172.16.0.0/12'
-        print '192.168.0.0/16'
+        print('10.0.0.0/8')
+        print('172.16.0.0/12')
+        print('192.168.0.0/16')
         if len(sys.argv) > 2:
             MAXBITS = int(sys.argv[2])
         parse_record(sys.argv[1])
